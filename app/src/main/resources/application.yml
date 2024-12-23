@@ -1,15 +1,24 @@
-server:
-  port: 7111
-
 spring:
+  main:
+    allow-bean-definition-overriding: true
   application:
-    name: tasky_manager
+    name: tasky
   datasource:
-    datasource:
-      url: jdbc:mysql://localhost:3306/tasky_manager?allowPublicKeyRetrieval=true&serverTimezone=UTC&autoReconnect=true&createDatabaseIfNotExist=true&useSSL=false
-      username: "root"
-      password: ""
+    url: jdbc:sqlserver://192.168.10.187;instance=;DatabaseName=zdf-bf-database-dev;trustServerCertificate=true;
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: sa
+    password: '%$Afro123'
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+      database-platform: org.hibernate.dialect.SQLServerDialect
+      show-sql: true
+      format_sql: true
+    open-in-view: true
+
+server:
+  port: 7111
+
+authentication:
+  signing-key: 'test_test'
+  jwt-expiration-time: 9999999
