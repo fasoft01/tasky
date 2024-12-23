@@ -1,0 +1,15 @@
+server:
+  port: 7111
+
+spring:
+  application:
+    name: tasky_manager
+  datasource:
+    datasource:
+      url: jdbc:mysql://localhost:3306/tasky_manager?allowPublicKeyRetrieval=true&serverTimezone=UTC&autoReconnect=true&createDatabaseIfNotExist=true&useSSL=false
+      username: "root"
+      password: ""
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
