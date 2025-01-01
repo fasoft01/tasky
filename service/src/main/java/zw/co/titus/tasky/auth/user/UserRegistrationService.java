@@ -3,6 +3,7 @@ package zw.co.titus.tasky.auth.user;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import zw.co.titus.tasky.auth.SignUpRequest;
 import zw.co.titus.tasky.auth.UpdatePasswordRequest;
 
 

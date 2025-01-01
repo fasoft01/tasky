@@ -58,4 +58,15 @@ public class TaskSpecifications {
             return criteriaBuilder.between(root.get("deadline"), startOfDay, endOfDay);
         };
     }
+
+    public static Specification<Task> lastUpdatedAfter(LocalDate lastUpdated) {
+        return (root, query, criteriaBuilder) -> {
+            if (lastUpdated == null) {
+                return criteriaBuilder.conjunction();
+            }
+            LocalDateTime startOfDay = lastUpdated.atStartOfDay();
+            return criteriaBuilder.greaterThanOrEqualTo(root.get("lastUpdated"), startOfDay);
+        };
+        }
+
 }

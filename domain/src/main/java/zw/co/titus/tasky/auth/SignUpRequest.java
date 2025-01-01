@@ -1,4 +1,4 @@
-package zw.co.titus.tasky.auth.user;
+package zw.co.titus.tasky.auth;
 
 import lombok.Data;
 

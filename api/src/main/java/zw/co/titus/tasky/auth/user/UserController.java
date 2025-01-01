@@ -9,15 +9,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import zw.co.titus.tasky.auth.user.UserRegistrationService;
+import zw.co.titus.tasky.auth.SignUpRequest;
 
 import java.security.Principal;
 
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
-@Slf4j
-@SecurityRequirement(name = "authorization")
+//@Slf4j
+//@SecurityRequirement(name = "authorization")
 public class UserController {
     private final UserRegistrationService userRegistrationService;
 

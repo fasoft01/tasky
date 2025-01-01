@@ -15,5 +15,5 @@ public interface TaskService {
 
     Task delete(Long id);
 
-    Page<Task> getAll(String title, String description, LocalDate deadline, LocalDate deadlineEndDate, String name, Pageable pageable);
+    Page<Task> getAll(String title, String description, LocalDate deadline, LocalDate deadlineEndDate, LocalDate lastUpdated, String name, Pageable pageable);
 }

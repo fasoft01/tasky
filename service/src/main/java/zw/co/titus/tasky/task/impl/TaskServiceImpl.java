@@ -86,11 +86,13 @@ public class TaskServiceImpl implements TaskService {
 
     public Page<Task> getAll(String title, String description,
             LocalDate deadlineStartDate, LocalDate deadlineEndDate,
+            LocalDate lastUpdated,
             String username, Pageable pageable) {
 
         Specification<Task> spec = Specification.where(TaskSpecifications.assignedToUsername(username))
                 .and(TaskSpecifications.titleContains(title))
                 .and(TaskSpecifications.descriptionContains(description))
+                .and(TaskSpecifications.lastUpdatedAfter(lastUpdated))
                 .and(TaskSpecifications.deadlineBetween(deadlineStartDate, deadlineEndDate));
 
         return taskRepository.findAll(spec, pageable);

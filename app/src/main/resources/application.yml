@@ -4,12 +4,16 @@ server:
 spring:
   application:
     name: tasky_manager
+
   datasource:
-    datasource:
-      url: jdbc:mysql://localhost:3306/tasky_manager?allowPublicKeyRetrieval=true&serverTimezone=UTC&autoReconnect=true&createDatabaseIfNotExist=true&useSSL=false
-      username: "root"
-      password: ""
+    url: jdbc:postgresql://db-postgresql-nyc3-68435-do-user-13333067-0.g.db.ondigitalocean.com:25060/taskyy
+    username: "titusdb"
+    password: "AVNS_eJdCUVeiRqaPxSMhgxq"
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+authentication:
+  signing-key: 'test_test'
+  jwt-expiration-time: 9999999

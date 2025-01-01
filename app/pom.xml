@@ -9,6 +9,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+
     <artifactId>app</artifactId>
     <dependencies>
         <dependency>
@@ -29,6 +30,8 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <finalName>taskyy</finalName>
     </build>
+
 
 </project>

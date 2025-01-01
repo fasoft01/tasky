@@ -72,9 +72,14 @@ public class TaskController {
             @RequestParam(defaultValue = "0") Integer pageNumber,
             @Parameter(description = TaskSwaggerConstants.PAGE_SIZE_DESCRIPTION)
             @RequestParam(defaultValue = "10") Integer pageSize,
+
+            @Parameter(description = "Last modified date")
+            @RequestParam @Nullable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate lastUpdated,
+
+
             Principal principal) {
         Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by("id").descending());
-        return ResponseEntity.ok(taskService.getAll(title, description, deadlineStartDate, deadlineEndDate,principal.getName(), pageable));
+        return ResponseEntity.ok(taskService.getAll(title, description, deadlineStartDate, deadlineEndDate,lastUpdated,principal.getName() ,pageable));
     }
 
 }

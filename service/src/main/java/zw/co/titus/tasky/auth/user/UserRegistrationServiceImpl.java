@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import zw.co.titus.tasky.auth.SignUpRequest;
 import zw.co.titus.tasky.auth.UpdatePasswordRequest;
 import zw.co.titus.tasky.exceptions.InvalidArgumentException;
 import zw.co.titus.tasky.exceptions.RecordNotFoundException;

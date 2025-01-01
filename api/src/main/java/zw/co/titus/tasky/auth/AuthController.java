@@ -1,11 +1,10 @@
 package zw.co.titus.tasky.auth;
 
 
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import zw.co.titus.tasky.auth.user.User;
 import zw.co.titus.tasky.auth.user.UserRegistrationService;
 
 import java.security.Principal;
@@ -14,8 +13,8 @@ import java.security.Principal;
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
-@Slf4j
-@SecurityRequirement(name = "authorization")
+//@Slf4j
+//@SecurityRequirement(name = "authorization")
 public class AuthController {
     private final AuthenticationService authenticationService;
     private final UserRegistrationService userRegistrationService;
@@ -23,6 +22,11 @@ public class AuthController {
     @PostMapping("/sign-in")
     public ResponseEntity<?> signIn(@RequestBody SignInRequest signInRequest) {
         return authenticationService.signInUser(signInRequest);
+    }
+
+    @PostMapping("/sign-up")
+    public ResponseEntity<User> signUp(@RequestBody SignUpRequest signUpRequest) {
+        return ResponseEntity.ok( userRegistrationService.register(signUpRequest));
     }
 
     @PostMapping("/change-password")
