@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import zw.co.titus.tasky.AppAuditEventListener;
 import zw.co.titus.tasky.auth.user.User;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -27,6 +28,8 @@ public class Task {
     @Size(max = 255, message = "Title must not exceed 255 characters")
     private String title;
 
+    private Boolean isSynced;
+
     @Size(max = 2000, message = "Description must not exceed 2000 characters")
     private String description;
 
@@ -35,7 +38,7 @@ public class Task {
     private LocalDateTime deadline;
 
     @NotNull(message = "Last updated date is required")
-    private LocalDateTime lastUpdated;
+    private LocalDate lastUpdated;
 
     @Embedded
     private Audit audit;

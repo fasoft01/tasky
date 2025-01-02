@@ -16,6 +16,7 @@ import zw.co.titus.tasky.auth.user.User;
 import zw.co.titus.tasky.user.UserAccountRepository;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Service
 @Slf4j
@@ -34,8 +35,9 @@ public class TaskServiceImpl implements TaskService {
         Task task = Task.builder()
                 .title(request.getTitle())
                 .description(request.getDescription())
+                .isSynced(request.getIsSynced())
                 .deadline(request.getDeadline())
-                .lastUpdated(LocalDate.now().atStartOfDay())
+                .lastUpdated(LocalDate.now())
                 .user(user)
                 .build();
 
@@ -46,26 +48,27 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task getById(Long id) {
+    public Task getById(String id) {
         log.info("Fetching task with ID: {}", id);
         return findById(id);
     }
 
-    private Task findById(Long taskId) {
+    private Task findById(String taskId) {
         return taskRepository.findById(taskId)
                 .orElseThrow(() -> new RecordNotFoundException("Task not found with ID: " + taskId));
     }
 
     @Override
-    public Task update(Long id, TaskRequest request) {
+    public Task update(String id, TaskRequest request) {
         log.info("Updating task with ID: {}", id);
 
         Task task = findById(id);
 
         task.setTitle(request.getTitle());
         task.setDescription(request.getDescription());
+        task.setIsSynced(request.getIsSynced());
         task.setDeadline(request.getDeadline());
-        task.setLastUpdated(LocalDate.now().atStartOfDay());
+        task.setLastUpdated(LocalDate.now());
 
         task = taskRepository.save(task);
 
@@ -74,7 +77,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task delete(Long id) {
+    public Task delete(String id) {
         log.info("Deleting task with ID: {}", id);
 
         Task task = findById(id);
@@ -97,5 +100,4 @@ public class TaskServiceImpl implements TaskService {
 
         return taskRepository.findAll(spec, pageable);
     }
-
 }

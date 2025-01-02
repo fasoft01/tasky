@@ -9,11 +9,13 @@ import java.time.LocalDate;
 public interface TaskService {
     Task create(TaskRequest request, String name);
 
-    Task getById(Long id);
+    Task getById(String id);
 
-    Task update(Long id, TaskRequest request);
+    Task update(String id, TaskRequest request);
 
-    Task delete(Long id);
+    Task delete(String id);
 
-    Page<Task> getAll(String title, String description, LocalDate deadline, LocalDate deadlineEndDate, LocalDate lastUpdated, String name, Pageable pageable);
+    Page<Task> getAll(String title, String description, LocalDate deadline,
+                      LocalDate deadlineEndDate, LocalDate lastUpdated, String name,
+                      Pageable pageable);
 }

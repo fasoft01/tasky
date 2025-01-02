@@ -64,8 +64,7 @@ public class TaskSpecifications {
             if (lastUpdated == null) {
                 return criteriaBuilder.conjunction();
             }
-            LocalDateTime startOfDay = lastUpdated.atStartOfDay();
-            return criteriaBuilder.greaterThanOrEqualTo(root.get("lastUpdated"), startOfDay);
+            return criteriaBuilder.greaterThanOrEqualTo(root.get("lastUpdated"), lastUpdated);
         };
         }
 

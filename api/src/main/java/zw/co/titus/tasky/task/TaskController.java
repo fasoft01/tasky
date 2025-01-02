@@ -37,7 +37,7 @@ public class TaskController {
     @GetMapping("/{id}")
     public ResponseEntity<Task> getById(
             @Parameter(description = TaskSwaggerConstants.ID_DESCRIPTION, required = true)
-            @PathVariable Long id) {
+            @PathVariable String id) {
         return ResponseEntity.ok(taskService.getById(id));
     }
 
@@ -45,7 +45,7 @@ public class TaskController {
     @PutMapping("/{id}")
     public ResponseEntity<Task> update(
             @Parameter(description = TaskSwaggerConstants.ID_DESCRIPTION, required = true)
-            @PathVariable Long id,
+            @PathVariable String id,
             @RequestBody TaskRequest request) {
         return ResponseEntity.ok(taskService.update(id, request));
     }
@@ -54,7 +54,7 @@ public class TaskController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Task> delete(
             @Parameter(description = TaskSwaggerConstants.ID_DESCRIPTION, required = true)
-            @PathVariable Long id) {
+            @PathVariable String id) {
         return ResponseEntity.ok(taskService.delete(id));
     }
 
@@ -72,11 +72,8 @@ public class TaskController {
             @RequestParam(defaultValue = "0") Integer pageNumber,
             @Parameter(description = TaskSwaggerConstants.PAGE_SIZE_DESCRIPTION)
             @RequestParam(defaultValue = "10") Integer pageSize,
-
             @Parameter(description = "Last modified date")
             @RequestParam @Nullable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate lastUpdated,
-
-
             Principal principal) {
         Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by("id").descending());
         return ResponseEntity.ok(taskService.getAll(title, description, deadlineStartDate, deadlineEndDate,lastUpdated,principal.getName() ,pageable));

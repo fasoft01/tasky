@@ -19,6 +19,8 @@ public class TaskRequest {
     @Size(max = 255, message = "Title must not exceed 255 characters")
     private String title;
 
+    private Boolean isSynced;
+
     @Size(max = 2000, message = "Description must not exceed 2000 characters")
     private String description;
 
