@@ -59,7 +59,7 @@ public class TaskSpecifications {
         };
     }
 
-    public static Specification<Task> lastUpdatedAfter(LocalDate lastUpdated) {
+    public static Specification<Task> lastUpdatedAfter(LocalDateTime lastUpdated) {
         return (root, query, criteriaBuilder) -> {
             if (lastUpdated == null) {
                 return criteriaBuilder.conjunction();
@@ -67,5 +67,4 @@ public class TaskSpecifications {
             return criteriaBuilder.greaterThanOrEqualTo(root.get("lastUpdated"), lastUpdated);
         };
         }
-
 }

@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import zw.co.titus.tasky.task.dto.TaskRequest;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public interface TaskService {
     Task create(TaskRequest request, String name);
@@ -16,6 +17,6 @@ public interface TaskService {
     Task delete(String id);
 
     Page<Task> getAll(String title, String description, LocalDate deadline,
-                      LocalDate deadlineEndDate, LocalDate lastUpdated, String name,
+                      LocalDate deadlineEndDate, LocalDateTime lastUpdated, String name,
                       Pageable pageable);
 }

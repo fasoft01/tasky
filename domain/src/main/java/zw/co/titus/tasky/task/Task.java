@@ -38,7 +38,7 @@ public class Task {
     private LocalDateTime deadline;
 
     @NotNull(message = "Last updated date is required")
-    private LocalDate lastUpdated;
+    private LocalDateTime lastUpdated;
 
     @Embedded
     private Audit audit;

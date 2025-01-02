@@ -17,6 +17,7 @@ import zw.co.titus.tasky.task.dto.TaskRequest;
 
 import java.security.Principal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/tasks")
@@ -73,7 +74,7 @@ public class TaskController {
             @Parameter(description = TaskSwaggerConstants.PAGE_SIZE_DESCRIPTION)
             @RequestParam(defaultValue = "10") Integer pageSize,
             @Parameter(description = "Last modified date")
-            @RequestParam @Nullable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate lastUpdated,
+            @RequestParam @Nullable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime lastUpdated,
             Principal principal) {
         Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by("id").descending());
         return ResponseEntity.ok(taskService.getAll(title, description, deadlineStartDate, deadlineEndDate,lastUpdated,principal.getName() ,pageable));

@@ -22,7 +22,7 @@ public class AppAuditEventListener {
             Audit audit = getAudit(obj);
             if (Objects.isNull(audit)) audit = new Audit();
             audit.setCreatedBy(USER);
-            audit.setLastUpdated(LocalDateTime.now());
+            audit.setLastModified(LocalDateTime.now());
             audit.setCreatedDate(LocalDate.now());
             audit.setModifiedBy(USER);
             Method setAudit =  getSetAuditMethod(obj);
@@ -46,7 +46,7 @@ public class AppAuditEventListener {
                 audit.setCreatedDate(LocalDate.now());
             }
             audit.setModifiedBy(getLoggedUser());
-            audit.setLastUpdated(LocalDateTime.now());
+            audit.setLastModified(LocalDateTime.now());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

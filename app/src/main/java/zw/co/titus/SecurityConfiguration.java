@@ -60,7 +60,7 @@ public class SecurityConfiguration {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/v3/api-docs/**", "/users/**", "/swagger-ui/**","/auth/sign-in").permitAll()
+                .requestMatchers("/v3/api-docs/**", "/users/**", "/swagger-ui/**","/auth/sign-in","/auth/sign-up").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);

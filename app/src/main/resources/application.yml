@@ -6,7 +6,7 @@ spring:
     name: tasky_manager
 
   datasource:
-    url: jdbc:postgresql://db-postgresql-nyc3-68435-do-user-13333067-0.g.db.ondigitalocean.com:25060/taskyy
+    url: jdbc:postgresql://db-postgresql-nyc3-68435-do-user-13333067-0.g.db.ondigitalocean.com:25060/taskyy_dev
     username: "titusdb"
     password: "AVNS_eJdCUVeiRqaPxSMhgxq"
   jpa:

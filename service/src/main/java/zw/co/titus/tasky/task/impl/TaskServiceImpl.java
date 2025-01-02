@@ -37,7 +37,7 @@ public class TaskServiceImpl implements TaskService {
                 .description(request.getDescription())
                 .isSynced(request.getIsSynced())
                 .deadline(request.getDeadline())
-                .lastUpdated(LocalDate.now())
+                .lastUpdated(LocalDateTime.now())
                 .user(user)
                 .build();
 
@@ -68,10 +68,9 @@ public class TaskServiceImpl implements TaskService {
         task.setDescription(request.getDescription());
         task.setIsSynced(request.getIsSynced());
         task.setDeadline(request.getDeadline());
-        task.setLastUpdated(LocalDate.now());
+        task.setLastUpdated(request.getLastUpdated());
 
         task = taskRepository.save(task);
-
         log.info("Task updated with ID: {}", task.getId());
         return task;
     }
@@ -88,9 +87,9 @@ public class TaskServiceImpl implements TaskService {
     }
 
     public Page<Task> getAll(String title, String description,
-            LocalDate deadlineStartDate, LocalDate deadlineEndDate,
-            LocalDate lastUpdated,
-            String username, Pageable pageable) {
+                             LocalDate deadlineStartDate, LocalDate deadlineEndDate,
+                             LocalDateTime lastUpdated,
+                             String username, Pageable pageable) {
 
         Specification<Task> spec = Specification.where(TaskSpecifications.assignedToUsername(username))
                 .and(TaskSpecifications.titleContains(title))

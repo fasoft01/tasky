@@ -13,8 +13,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class TaskRequest {
 
-
-
     @NotBlank(message = "Title is required")
     @Size(max = 255, message = "Title must not exceed 255 characters")
     private String title;
@@ -27,4 +25,6 @@ public class TaskRequest {
     @NotNull(message = "Deadline is required")
     @FutureOrPresent(message = "Deadline must be in the present or future")
     private LocalDateTime deadline;
+
+    private LocalDateTime lastUpdated;
 }
